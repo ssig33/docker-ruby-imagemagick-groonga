@@ -8,5 +8,5 @@ RUN wget ftp://ftp.kddlabs.co.jp/graphics/ImageMagick/releases/ImageMagick-6.8.9
 
 RUN wget http://cache.ruby-lang.org/pub/ruby/2.1/ruby-2.1.3.tar.gz && tar xvf ruby-2.1.3.tar.gz && cd  ruby-2.1.3 && ./configure && make -j4 && make install && cd .. && rm -rf  ruby-2.1.3 && rm -rf  ruby-2.1.3.tar.gz
 
-gem install foreman
+gem install foreman bundler
 
