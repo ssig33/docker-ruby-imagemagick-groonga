@@ -6,7 +6,7 @@ RUN apt-get update && apt-get install aptitude git wget -y && aptitude -V -D -y 
 
 RUN wget ftp://ftp.kddlabs.co.jp/graphics/ImageMagick/releases/ImageMagick-6.8.9-8.tar.xz && tar xvf ImageMagick-6.8.9-8.tar.xz && cd ImageMagick-6.8.9-8 && ./configure && make -j4 && make install && cd .. && rm -rf ImageMagick*
 
-RUN wget http://cache.ruby-lang.org/pub/ruby/2.1/ruby-2.1.3.tar.gz && tar xvf ruby-2.1.3.tar.gz && cd  ruby-2.1.3 && ./configure && make -j4 && make install && cd .. && rm -rf  ruby-2.1.3 && rm -rf  ruby-2.1.3.tar.gz
+RUN wget http://cache.ruby-lang.org/pub/ruby/2.1/ruby-2.1.4.tar.bz2 && tar xvf ruby-2.1.4.tar.gz && cd  ruby-2.1.4 && ./configure && make -j4 && make install && cd .. && rm -rf  ruby-2.1.4 && rm -rf  ruby-2.1.4.tar.gz
 
 RUN gem install foreman bundler
 
