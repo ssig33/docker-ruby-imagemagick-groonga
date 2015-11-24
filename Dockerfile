@@ -6,7 +6,7 @@ RUN apt-get update && apt-get install aptitude git wget -y && aptitude -V -D -y 
 
 RUN apt-get update && apt-get install libffi-dev libmagickwand-dev -y && rm -rf /var/cache/apt/archives/* /var/lib/apt/lists/*
 
-RUN wget http://cache.ruby-lang.org/pub/ruby/2.2/ruby-2.2.2.tar.bz2 && tar xvf ruby-2.2.2.tar.bz2 && cd  ruby-2.2.2 && ./configure && make -j4 && make install && cd .. && rm -rf  ruby-2.2.2 && rm -rf  ruby-2.2.2.tar.gz
+RUN wget https://cache.ruby-lang.org/pub/ruby/2.2/ruby-2.2.3.tar.bz2 && tar xvf ruby-2.2.3.tar.bz2 && cd  ruby-2.2.3 && ./configure && make -j4 && make install && cd .. && rm -rf  ruby-2.2.3 && rm -rf  ruby-2.2.3.tar.gz
 
 RUN apt-get update && apt-get install imagemagick -y && rm -rf /var/cache/apt/archives/* /var/lib/apt/lists/*
 
