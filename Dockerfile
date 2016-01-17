@@ -1,14 +1,11 @@
-FROM debian:sid
+FROM alpine:edge
 
-RUN echo deb http://ftp.jp.debian.org/debian/ sid main > /etc/apt/sources.list && echo deb-src http://ftp.jp.debian.org/debian/ sid main >> /etc/apt/sources.list && echo "deb http://packages.groonga.org/debian/ unstable main"  >> /etc/apt/sources.list && echo "deb-src http://packages.groonga.org/debian/ unstable main" >> /etc/apt/sources.list
-
-RUN apt-get update && apt-get install aptitude git wget -y && aptitude -V -D -y --allow-untrusted install groonga-keyring && apt-get update && apt-get install nginx libgroonga-dev groonga libssl-dev libsqlite3-dev libmysqlclient-dev libncurses5-dev libreadline-dev libyaml-dev libsqlite3-dev libxml2-dev libxslt-dev libsasl2-dev libsasl2-2 libv8-dev libv8-dev nodejs libgdbm-dev -y && apt-get build-dep imagemagick -y && apt-get build-dep ruby -y && apt-get clean && rm -rf /var/cache/apt/archives/* /var/lib/apt/lists/*
-
-RUN apt-get update && apt-get install libffi-dev libmagickwand-dev -y && rm -rf /var/cache/apt/archives/* /var/lib/apt/lists/*
-
-RUN wget https://cache.ruby-lang.org/pub/ruby/2.2/ruby-2.2.3.tar.bz2 && tar xvf ruby-2.2.3.tar.bz2 && cd  ruby-2.2.3 && ./configure && make -j4 && make install && cd .. && rm -rf  ruby-2.2.3 && rm -rf  ruby-2.2.3.tar.gz
-
-RUN apt-get update && apt-get install imagemagick -y && rm -rf /var/cache/apt/archives/* /var/lib/apt/lists/*
+RUN apk add --update ruby ruby-dev ruby-bundler && rm -rf /var/cache/apk/*
+RUN apk add --update ruby-io-console &&  rm -rf /var/cache/apk/*
+RUN apk add --update imagemagick-dev imagemagick && rm -rf /var/cache/apk/*
+RUN apk add --update alpine-sdk && rm -rf /var/cache/apk/*
+RUN apk add --update ruby-rdoc ruby-irb && rm -rf /var/cache/apk/*
+RUN wget http://packages.groonga.org/source/groonga/groonga-5.1.1.tar.gz && tar xvzf groonga-5.1.1.tar.gz && cd groonga-5.1.1 && ./configure && make -j9 && make install && cd .. && rm -rf groonga-5.1.1 groonga-5.1.1.tar.gz
 
 RUN gem install foreman bundler rmagick
 
